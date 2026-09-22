@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OraHaus | Furniture & Interiors</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #f8f7f4;
+      --cream: #eeece7;
+      --marble: #e8e5df;
+      --dark: #171716;
+      --grey: #77746e;
+      --line: rgba(23,23,22,.12);
+      --shadow: 0 20px 60px rgba(0,0,0,.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 82px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(248,247,244,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      letter-spacing: -1px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 14px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      left: 0;
+      bottom: -6px;
+      background: var(--dark);
+      transition: .3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-btn {
+      border: 1px solid var(--dark);
+      padding: 11px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .nav-btn:hover {
+      background: var(--dark);
+      color: white;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 6% 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 70px;
+      align-items: center;
+
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.9), transparent 30%),
+        linear-gradient(135deg, #f9f8f5, #e9e6df);
+    }
+
+    .hero-content {
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(55px, 7vw, 105px);
+      line-height: .94;
+      font-weight: 500;
+      letter-spacing: -4px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 490px;
+      color: var(--grey);
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 38px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .primary-btn {
+      background: var(--dark);
+      color: white;
+      text-decoration: none;
+      padding: 15px 26px;
+      border-radius: 50px;
+      font-size: 13px;
+      transition: .35s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,.15);
+    }
+
+    .secondary-btn {
+      color: var(--dark);
+      text-decoration: none;
+      padding: 15px 22px;
+      font-size: 13px;
+    }
+
+    .hero-image {
+      height: 650px;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      animation: imageReveal 1.2s ease forwards;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s ease;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-label {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      padding: 13px 18px;
+      font-size: 12px;
+    }
+
+    /* ================= INTRO ================= */
+
+    .intro {
+      padding: 130px 10%;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(40px,5vw,70px);
+      font-weight: 500;
+      max-width: 850px;
+      margin: auto;
+      line-height: 1.05;
+    }
+
+    .intro p {
+      max-width: 580px;
+      margin: 30px auto 0;
+      color: var(--grey);
+      line-height: 1.8;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      padding: 90px 6%;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 45px;
+    }
+
+    .section-head h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 52px;
+      font-weight: 500;
+    }
+
+    .section-head p {
+      color: var(--grey);
+      max-width: 300px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product-img {
+      height: 440px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .7s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.07);
+    }
+
+    .product-info {
+      padding: 18px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-info h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .product-info span {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    /* ================= MARBLE BANNER ================= */
+
+    .marble-section {
+      margin: 100px 6%;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 70px;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.94), rgba(255,255,255,.55)),
+        url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .marble-content {
+      max-width: 570px;
+    }
+
+    .marble-content h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 65px;
+      line-height: 1;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .marble-content p {
+      color: #555;
+      line-height: 1.8;
+      max-width: 470px;
+    }
+
+    /* ================= CATEGORIES ================= */
+
+    .categories {
+      padding: 100px 6%;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .category {
+      height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .8s;
+    }
+
+    .category:hover img {
+      transform: scale(1.06);
+    }
+
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: end;
+      padding: 35px;
+      background: linear-gradient(transparent, rgba(0,0,0,.55));
+      color: white;
+    }
+
+    .category-overlay h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      padding: 130px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: center;
+      background: var(--cream);
+    }
+
+    .about-image {
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 65px;
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+
+    .about-text p {
+      color: var(--grey);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+      padding: 130px 6%;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(50px,6vw,90px);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .contact p {
+      color: var(--grey);
+      margin-bottom: 40px;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .detail span {
+      display: block;
+      color: var(--grey);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .detail strong {
+      font-weight: 500;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 35px 6%;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    /* ================= ANIMATIONS ================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes imageReveal {
+      from {
+        opacity: 0;
+        transform: translateX(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width: 850px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+      }
+
+      .hero-image {
+        height: 500px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 15px;
+      }
+
+      .marble-section {
+        margin: 60px 5%;
+        padding: 40px;
+      }
+
+      .marble-content h2 {
+        font-size: 48px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 90px 6%;
+      }
+
+      .about-image {
+        height: 450px;
+      }
+
+      .about-text h2 {
+        font-size: 50px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">OraHaus</div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#spaces">Spaces</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-btn">Visit Us</a>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">Furniture · Interiors · Living</div>
+
+      <h1>
+        Spaces<br>
+        made <span>beautiful.</span>
+      </h1>
+
+      <p>
+        Thoughtfully designed furniture for people who believe
+        their home should feel as good as it looks. Discover
+        timeless pieces made to elevate everyday living.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#collection" class="primary-btn">
+          Explore Collection
+        </a>
+
+        <a href="#contact" class="secondary-btn">
+          Visit OraHaus →
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=85"
+        alt="Luxury interior"
+      >
+
+      <div class="image-label">
+        Crafted for modern living
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="intro reveal">
+
+    <div class="eyebrow">The OraHaus Philosophy</div>
+
+    <h2>
+      Furniture should not simply fill a room.
+      <em>It should define it.</em>
+    </h2>
+
+    <p>
+      From sculptural seating to refined dining pieces,
+      OraHaus brings together form, texture and function
+      to create interiors that feel effortlessly considered.
+    </p>
+
+  </section>
+
+
+  <!-- COLLECTION -->
+
+  <section class="products" id="collection">
+
+    <div class="section-head reveal">
+
+      <div>
+        <div class="eyebrow">Our Collection</div>
+        <h2>Made to stay.</h2>
+      </div>
+
+      <p>
+        A curated selection of furniture designed
+        around comfort, quality and timeless style.
+      </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+      <div class="product reveal">
+        <div class="product-img">
+          <img
+            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85"
+            alt="Sofa"
+          >
+        </div>
+
+        <div class="product-info">
+          <h3>The Cloud Sofa</h3>
+          <span>Living</span>
+        </div>
+      </div>
+
+
+      <div class="product reveal">
+        <div class="product-img">
+          <img
+            src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85"
+            alt="Interior"
+          >
+        </div>
+
+        <div class="product-info">
+          <h3>Monument Table</h3>
+          <span>Dining</span>
+        </div>
+      </div>
+
+
+      <div class="product reveal">
+        <div class="product-img">
+          <img
+            src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1000&q=85"
+            alt="Chair"
+          >
+        </div>
+
+        <div class="product-info">
+          <h3>Form Chair</h3>
+          <span>Seating</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARBLE FEATURE -->
+
+  <section class="marble-section reveal">
+
+    <div class="marble-content">
+
+      <div class="eyebrow">
+        Natural Materials
+      </div>
+
+      <h2>
+        Where stone<br>
+        meets softness.
+      </h2>
+
+      <p>
+        We pair tactile fabrics, natural stone and warm
+        timber to create pieces that bring depth and
+        character into your space.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- SPACES -->
+
+  <section class="categories" id="spaces">
+
+    <div class="section-head reveal">
+
+      <div>
+        <div class="eyebrow">Explore Spaces</div>
+        <h2>Made for every room.</h2>
+      </div>
+
+    </div>
+
+
+    <div class="category-grid">
+
+      <div class="category reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1400&q=85"
+          alt="Living room"
+        >
+
+        <div class="category-overlay">
+          <h3>Living</h3>
+        </div>
+
+      </div>
+
+
+      <div class="category reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85"
+          alt="Dining room"
+        >
+
+        <div class="category-overlay">
+          <h3>Dining</h3>
+        </div>
+
+      </div>
+
+
+      <div class="category reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=85"
+          alt="Bedroom"
+        >
+
+        <div class="category-overlay">
+          <h3>Bedroom</h3>
+        </div>
+
+      </div>
+
+
+      <div class="category reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85"
+          alt="Interior"
+        >
+
+        <div class="category-overlay">
+          <h3>Interiors</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="about-image reveal">
+
+      <img
+        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85"
+        alt="OraHaus interior"
+      >
+
+    </div>
+
+
+    <div class="about-text reveal">
+
+      <div class="eyebrow">
+        About OraHaus
+      </div>
+
+      <h2>
+        Designed<br>
+        around life.
+      </h2>
+
+      <p>
+        OraHaus is a furniture and interiors studio based
+        in Vanderbijlpark, South Africa.
+      </p>
+
+      <p>
+        We believe beautiful spaces don't need to be
+        complicated. Every piece is selected with
+        proportion, texture and everyday comfort in mind.
+      </p>
+
+      <a href="#contact" class="primary-btn">
+        Discover OraHaus
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="eyebrow">
+      Come see us
+    </div>
+
+    <h2>
+      Your space<br>
+      starts here.
+    </h2>
+
+    <p>
+      Visit our Vanderbijlpark location and experience
+      OraHaus in person.
+    </p>
+
+    <a
+      class="primary-btn"
+      href="https://www.google.com/maps/search/?api=1&query=24+Fairbank+Street+Vanderbijlpark"
+      target="_blank"
+    >
+      Get Directions
+    </a>
+
+
+    <div class="contact-details">
+
+      <div class="detail">
+        <span>Address</span>
+        <strong>24 Fairbank Street<br>Vanderbijlpark</strong>
+      </div>
+
+      <div class="detail">
+        <span>Location</span>
+        <strong>Vanderbijlpark, Gauteng</strong>
+      </div>
+
+      <div class="detail">
+        <span>Experience</span>
+        <strong>Furniture · Interiors</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      © 2026 OraHaus
+    </div>
+
+    <div>
+      Furniture · Interiors · Living
+    </div>
+
+  </footer>
+
+
+  <!-- ANIMATION SCRIPT -->
+
+  <script>
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    reveals.forEach(element => {
+      observer.observe(element);
+    });
+
+  </script>
+
+</body>
+</html>
